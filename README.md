@@ -27,4 +27,4 @@ Periodically checks for updates to an external script and syncs the latest versi
 
 ## License
 
-[MIT](./LICENSE)
+[Apache 2.0 License](./LICENSE)
