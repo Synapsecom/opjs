@@ -1,0 +1,25 @@
+---
+stages:
+  - update
+
+update_op1:
+  stage: update
+  script:
+    # Download latest op1.js
+    - curl -fsSL https://openpanel.dev/op1.js -o op1.js
+
+    # Ensure Git is configured
+    - git config user.name "CI"
+    - git config user.email "ci@synapsecom.gr"
+
+    # Check if the file changed
+    - git add op1.js
+    - |
+      if git diff --cached --quiet; then
+        echo "No changes in op1.js"
+      else
+        git commit -m "⬆️ Update op1.js from openpanel.dev [CI skip]"
+        git push "https://${GITLAB_USER}:${GITLAB_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git" HEAD:$CI_COMMIT_REF_NAME
+      fi
+  only:
+    - main
