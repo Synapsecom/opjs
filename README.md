@@ -27,4 +27,4 @@ Periodically checks for updates to an external script and syncs the latest versi
 
 ## License
 
-[Apache 2.0 License](./LICENSE)
+[GNU Affero General Public License v3.0](./LICENSE.md)
